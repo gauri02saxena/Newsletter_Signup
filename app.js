@@ -37,23 +37,27 @@ app.post("/", function (req, res) {
   //converting data to string
   var jsonData = JSON.stringify(data);
 
-  // //Storing api key, audience id and api server
-  // const MY_API_KEY = process.env.d90c942fbfda6d3227e3f5fd22588a81-us21;
+  //Storing api key, audience id and api server
+  const MY_API_KEY = process.env.API_KEY;
 
-  // const MY_AUDIENCE_ID = process.env.55268a0877;
+  const MY_AUDIENCE_ID = process.env.AUDIENCE_ID;
 
-  // const MY_API_SERVER = process.env.us21;
+  const MY_API_SERVER = process.env.API_SERVER;
+
 
   //each audience has different audience id
+ 
   const url =
-    "https://us21.api.mailchimp.com/3.0/lists/55268a0877" ;
-
+    "https://" +
+    MY_API_SERVER +
+    ".api.mailchimp.com/3.0/lists/" +
+    MY_AUDIENCE_ID;
     
 
 
   const options = {
     method: "POST",
-    auth: "gauri24:d90c942fbfda6d3227e3f5fd22588a81-us21",
+    auth: "gauri24"+ MY_API_KEY,
   };
 
   //creating https request to mailchimp to add a subscriber on its external server
