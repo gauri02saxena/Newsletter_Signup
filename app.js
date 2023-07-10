@@ -3,9 +3,7 @@ const request = require("request");
 const bodyParser = require("body-parser");
 const https = require("https");
 //To remove unnecessary info
-require("dotenv").config()
-
-
+require("dotenv").config();
 
 const app = express();
 
@@ -39,26 +37,23 @@ app.post("/", function (req, res) {
   //converting data to string
   var jsonData = JSON.stringify(data);
 
+  //Storing api key, audience id and api server
+  const MY_API_KEY = process.env.API_KEY;
 
-//Storing api key, audience id and api server
-  const MY_API_KEY = process.env.API_KEY
+  const MY_AUDIENCE_ID = process.env.AUDIENCE_ID;
 
-  const MY_AUDIENCE_ID = process.env.MY_AUDIENCE_ID_ID
-  
-  const MY_API_SERVER = process.env.API_SERVER
-  
+  const MY_API_SERVER = process.env.API_SERVER;
+
   //each audience has different audience id
-  const url = "https://"+MY_API_SERVER+".api.mailchimp.com/3.0/lists/" + MY_AUDIENCE_ID;
-  
-     
-
-
-
-  
+  const url =
+    "https://" +
+    MY_API_SERVER +
+    ".api.mailchimp.com/3.0/lists/" +
+    MY_AUDIENCE_ID;
 
   const options = {
     method: "POST",
-    auth: "gauri24:"+ MY_API_KEY
+    auth: "gauri24:" + MY_API_KEY,
   };
 
   //creating https request to mailchimp to add a subscriber on its external server
@@ -89,4 +84,3 @@ app.post("/failure", function (req, res) {
 app.listen(process.env.PORT || 3000, function () {
   console.log("Serving is running on port 3000");
 });
-
