@@ -84,17 +84,9 @@ app.post("/failure", function (req, res) {
   res.redirect("/");
 });
 
-//process.env.PORT makes heroku assign a dynamic port.
+//process.env.PORT makes hosting website assign a dynamic port.
 //by using "process.env.PORT || 3000" we can now access our website on our local port 3000 as well as dynamic port assigned by heroku
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Serving is running on port 3000");
 });
 
-//mailchimp api key
-//d5e0eff07aae3e2d08543241f077e4f5-us21
-
-//mailchimp audience id
-//55268a0877
-
-// {"name":"Freddie'\''s Favorite Hats","contact":{"company":"Mailchimp","address1":"675 Ponce De Leon Ave NE","address2":"Suite 5000","city":"Atlanta","state":"GA","zip":"30308","country":"US","phone":""},"permission_reminder":"You'\''re receiving this email because you signed up for updates about Freddie'\''s newest hats.","campaign_defaults":{"from_name":"Freddie","from_email":"freddie@freddiehats.com","subject":"","language":"en"},"email_type_option":true}
-// process.env.PORT || 
